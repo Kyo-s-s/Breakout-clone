@@ -10,7 +10,9 @@ public class App {
     public static boolean loop;
     public static GameScreenEnum gameScreen;
     
-    private static ArrayList<Block> blocks = new ArrayList<Block>();
+    public static Player player;
+    public static Ball ball;
+    public static ArrayList<Block> blocks = new ArrayList<Block>();
 
     public static void main(String[] args) throws Exception {
 
@@ -79,8 +81,9 @@ public class App {
 
     public static void startGame() {
         gameScreen = GameScreenEnum.GAME;
+        player = new Player();
+        ball = new Ball();
         blocks.clear();
-
         for (int x = SIDE_MARGIN; x + BLOCK_WIDTH <= SCREEN_WIDTH - SIDE_MARGIN; x += BLOCK_WIDTH) {
             for (int y = TOP_MARGIN; y + BLOCK_HEIGHT <= SCREEN_HEIGHT - 200; y += BLOCK_HEIGHT) {
                 blocks.add(new Block(x, y, Color.red));
@@ -90,6 +93,14 @@ public class App {
 
     public static void game() {
         Graphics gra = gameFrame.panel.image.getGraphics();
+
+        player.move();
+        ball.move();
+         
+
+
+        player.draw(gra);
+        ball.draw(gra);
         for (Block block: blocks) {
             block.draw(gra);
         }
