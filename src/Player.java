@@ -12,10 +12,10 @@ public class Player {
     }
 
     public void move() {
-        if (Keyboard.isKeyPressed(KeyEvent.VK_LEFT)) {
+        if (Keyboard.isKeyPressed(KeyEvent.VK_LEFT) || Keyboard.isKeyPressed(KeyEvent.VK_H)) {
             this.x -= PLAYER_SPEED;
         }
-        if (Keyboard.isKeyPressed(KeyEvent.VK_RIGHT)) {
+        if (Keyboard.isKeyPressed(KeyEvent.VK_RIGHT) || Keyboard.isKeyPressed(KeyEvent.VK_L)) {
             this.x += PLAYER_SPEED;
         }
         if (this.x < 0) {

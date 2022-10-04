@@ -3,8 +3,8 @@ import java.awt.*;
 import static constants.Constants.*;
 
 public class Ball {
-    int x, y;
-    int dx, dy;
+    double x, y;
+    double dx, dy;
 
     public Ball() {
         this.x = App.player.x + PLAYER_WIDTH / 2 - BALL_SIZE / 2;
@@ -27,13 +27,22 @@ public class Ball {
             this.dy *= -1;
         }
 
-        // TODO: blocks との衝突判定
-        // TODO: player との衝突判定
+        // blocks との衝突判定　Blocksでdx/dyをいじる
+        App.blocks.update(this);
+
+        // player との衝突判定
+        if (
+            App.player.x < this.x + BALL_SIZE / 2 &&
+            this.x + BALL_SIZE / 2 < App.player.x + PLAYER_WIDTH &&
+            App.player.y < this.y + BALL_SIZE / 2
+        ) {
+            this.dy *= -1;  // TODO: 位置によって角度を変える
+        }
 
         this.x += this.dx;
         this.y += this.dy;
 
-        if (SCREEN_HEIGHT - BOTTOM_MARGIN + 10 < this.y + BALL_SIZE) {
+        if (SCREEN_HEIGHT - BOTTOM_MARGIN + 20 < this.y + BALL_SIZE) {
             App.gameScreen = GameScreenEnum.GAMEOVER;
         }
 
@@ -41,7 +50,7 @@ public class Ball {
 
     public void draw(Graphics g) {
         g.setColor(Color.black);
-        g.fillOval(this.x, this.y, BALL_SIZE, BALL_SIZE);
+        g.fillOval((int)Math.round(this.x), (int)Math.round(this.y), BALL_SIZE, BALL_SIZE);
     }
 
 }

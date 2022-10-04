@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 import static constants.Constants.*;
 
@@ -12,7 +11,7 @@ public class App {
     
     public static Player player;
     public static Ball ball;
-    public static ArrayList<Block> blocks = new ArrayList<Block>();
+    public static Blocks blocks;
 
     public static void main(String[] args) throws Exception {
 
@@ -83,12 +82,7 @@ public class App {
         gameScreen = GameScreenEnum.GAME;
         player = new Player();
         ball = new Ball();
-        blocks.clear();
-        for (int x = SIDE_MARGIN; x + BLOCK_WIDTH <= SCREEN_WIDTH - SIDE_MARGIN; x += BLOCK_WIDTH) {
-            for (int y = TOP_MARGIN; y + BLOCK_HEIGHT <= SCREEN_HEIGHT - 200; y += BLOCK_HEIGHT) {
-                blocks.add(new Block(x, y, Color.red));
-            }
-        }
+        blocks = new Blocks();
     }
 
     public static void game() {
@@ -101,9 +95,7 @@ public class App {
 
         player.draw(gra);
         ball.draw(gra);
-        for (Block block: blocks) {
-            block.draw(gra);
-        }
+        blocks.draw(gra);
     }
 
     public static void gameOver() {
