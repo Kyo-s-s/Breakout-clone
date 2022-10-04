@@ -1,11 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class App {
 
     public static GameFrame gameFrame;
     public static boolean loop;
     public static GameScreenEnum gameScreen;
+    
+    private static ArrayList<Block> blocks = new ArrayList<Block>();
 
     public static void main(String[] args) throws Exception {
 
@@ -37,8 +40,10 @@ public class App {
                     start();
                     break;
                 case GAME:
+                    game();
                     break;
                 case GAMEOVER:
+                    gameOver();
                     break;
             }
             gameFrame.panel.draw();
@@ -66,10 +71,30 @@ public class App {
         metrics = gra.getFontMetrics(font);
         gra.drawString("Press enter to start", 250 - metrics.stringWidth("Press enter to start") / 2, 300);
         if (Keyboard.isKeyPressed(KeyEvent.VK_ENTER)) {
-            gameScreen = GameScreenEnum.GAME;
+            startGame();
         }
-    }    
-    
+    }
 
+    public static void startGame() {
+        gameScreen = GameScreenEnum.GAME;
+        blocks.clear();
+
+        for (int x = Constants.SIDE_MARGIN; x + Constants.BLOCK_WIDTH <= Constants.SCREEN_WIDTH - Constants.SIDE_MARGIN; x += Constants.BLOCK_WIDTH) {
+            for (int y = Constants.TOP_MARGIN; y + Constants.BLOCK_HEIGHT <= Constants.SCREEN_HEIGHT - 200; y += Constants.BLOCK_HEIGHT) {
+                blocks.add(new Block(x, y, Color.red));
+            }
+        }
+    }
+
+    public static void game() {
+        Graphics gra = gameFrame.panel.image.getGraphics();
+        for (Block block: blocks) {
+            block.draw(gra);
+        }
+    }
+
+    public static void gameOver() {
+
+    }
 
 }
