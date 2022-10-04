@@ -42,7 +42,7 @@ public class Ball {
         this.x += this.dx;
         this.y += this.dy;
 
-        if (SCREEN_HEIGHT - BOTTOM_MARGIN + 20 < this.y + BALL_SIZE) {
+        if (SCREEN_HEIGHT - BOTTOM_MARGIN + 10 < this.y + BALL_SIZE) {
             App.gameScreen = GameScreenEnum.GAMEOVER;
         }
 

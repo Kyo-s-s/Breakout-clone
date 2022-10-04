@@ -90,16 +90,26 @@ public class App {
 
         player.move();
         ball.move();
-         
-
-
+        
         player.draw(gra);
         ball.draw(gra);
         blocks.draw(gra);
     }
 
     public static void gameOver() {
-
+        Graphics gra = gameFrame.panel.image.getGraphics();
+        gra.setColor(Color.black);
+        Font font = new Font("SansSerif", Font.PLAIN, 50);
+        gra.setFont(font);
+        FontMetrics metrics = gra.getFontMetrics(font);
+        gra.drawString("Game Over", 250 - metrics.stringWidth("Game Over") / 2, 200);
+        font = new Font("SansSerif", Font.PLAIN, 20);
+        gra.setFont(font);
+        metrics = gra.getFontMetrics(font);
+        gra.drawString("Press ESC to Return Start Screen", 250 - metrics.stringWidth("Press ESC to Return Start Screen") / 2, 300);
+        if (Keyboard.isKeyPressed(KeyEvent.VK_ESCAPE)) {
+            gameScreen = GameScreenEnum.START;
+        }
     }
 
 }
