@@ -1,6 +1,7 @@
-import javax.swing.JFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 public class GameFrame extends JFrame {
     public GamePanel panel;
@@ -17,7 +18,8 @@ public class GameFrame extends JFrame {
                 App.loop = true;
             }
         });
-        
+
+        this.addKeyListener(new Keyboard());
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Breakout clone");

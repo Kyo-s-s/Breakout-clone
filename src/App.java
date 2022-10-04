@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 
 public class App {
 
@@ -20,17 +21,13 @@ public class App {
         long startTime, fpsTime = 0;
 
         while (loop) {
-
             startTime = System.currentTimeMillis();
-
             if (Constants.DEBUG && startTime - fpsTime >= 1000) {
                 fpsTime = startTime;
                 System.out.println("FPS: " + fps);
                 fps = 0;
             }
             fps++;
-
-
 
             gra.setColor(Color.white);
             gra.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
@@ -63,7 +60,14 @@ public class App {
         Font font = new Font("SansSerif", Font.PLAIN, 50);
         gra.setFont(font);
         FontMetrics metrics = gra.getFontMetrics(font);
-        gra.drawString("Breakout clone", 250 - metrics.stringWidth("Breakout clone") / 2, 100);
+        gra.drawString("Breakout clone", 250 - metrics.stringWidth("Breakout clone") / 2, 200);
+        font = new Font("SansSerif", Font.PLAIN, 20);
+        gra.setFont(font);
+        metrics = gra.getFontMetrics(font);
+        gra.drawString("Press enter to start", 250 - metrics.stringWidth("Press enter to start") / 2, 300);
+        if (Keyboard.isKeyPressed(KeyEvent.VK_ENTER)) {
+            gameScreen = GameScreenEnum.GAME;
+        }
     }    
     
 

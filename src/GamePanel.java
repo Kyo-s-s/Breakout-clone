@@ -1,6 +1,7 @@
-import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
     public BufferedImage image;
