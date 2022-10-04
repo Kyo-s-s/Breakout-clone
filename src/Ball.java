@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 
 import static constants.Constants.*;
 
@@ -14,7 +15,8 @@ public class Ball {
     }
 
     public void move() {
-        for (int i = 0; i < BALL_SPEED; i++) {
+        final int speed = Keyboard.isKeyPressed(KeyEvent.VK_UP) ? BALL_SPEED_MAX : BALL_SPEED_MIN;
+        for (int i = 0; i < speed; i++) {
             moveOne();
         }
     }

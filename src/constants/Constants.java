@@ -9,9 +9,9 @@ public class Constants {
 
     public static final int TOP_MARGIN = 50;
     public static final int BOTTOM_MARGIN = 100;
-    public static final int SIDE_MARGIN = 75;
+    public static final int SIDE_MARGIN = 50;
 
-    public static final int PLAYER_WIDTH = 100;
+    public static final int PLAYER_WIDTH = 200;
     public static final int PLAYER_HEIGHT = 10;
     public static final int PLAYER_SPEED = 10;
 
@@ -20,5 +20,6 @@ public class Constants {
     public static final int BLOCK_MARGIN = 1; // 上下左右のmargin
 
     public static final int BALL_SIZE = 10;
-    public static final int BALL_SPEED = 5;
+    public static final int BALL_SPEED_MIN = 5;
+    public static final int BALL_SPEED_MAX = 15;
 }
