@@ -3,11 +3,13 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import static constants.Constants.*;
+
 public class GamePanel extends JPanel {
     public BufferedImage image;
 
     public GamePanel() {
-        image = new BufferedImage(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
+        image = new BufferedImage(SCREEN_WIDTH, SCREEN_HEIGHT, BufferedImage.TYPE_INT_RGB);
     }
 
     @Override

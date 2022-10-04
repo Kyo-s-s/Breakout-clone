@@ -1,5 +1,7 @@
 import java.awt.*;
 
+import static constants.Constants.*;
+
 public class Block {
     public int x, y;
     public Color color;
@@ -12,6 +14,6 @@ public class Block {
 
     public void draw(Graphics gra) {
         gra.setColor(this.color);
-        gra.fillRect(this.x, this.y, Constants.BLOCK_WIDTH - 1, Constants.BLOCK_HEIGHT - 1);
+        gra.fillRect(this.x, this.y, BLOCK_WIDTH - 1, BLOCK_HEIGHT - 1);
     }
 }

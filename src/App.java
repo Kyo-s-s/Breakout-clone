@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
+import static constants.Constants.*;
+
 public class App {
 
     public static GameFrame gameFrame;
@@ -25,7 +27,7 @@ public class App {
 
         while (loop) {
             startTime = System.currentTimeMillis();
-            if (Constants.DEBUG && startTime - fpsTime >= 1000) {
+            if (DEBUG && startTime - fpsTime >= 1000) {
                 fpsTime = startTime;
                 System.out.println("FPS: " + fps);
                 fps = 0;
@@ -33,7 +35,7 @@ public class App {
             fps++;
 
             gra.setColor(Color.white);
-            gra.fillRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            gra.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
             switch (gameScreen) {
                 case START:
@@ -50,8 +52,8 @@ public class App {
 
             try {
                 long runTime = System.currentTimeMillis() - startTime;
-                if (runTime < 1000 / Constants.FPS) {
-                    Thread.sleep(1000 / Constants.FPS - runTime);
+                if (runTime < 1000 / FPS) {
+                    Thread.sleep(1000 / FPS - runTime);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -79,8 +81,8 @@ public class App {
         gameScreen = GameScreenEnum.GAME;
         blocks.clear();
 
-        for (int x = Constants.SIDE_MARGIN; x + Constants.BLOCK_WIDTH <= Constants.SCREEN_WIDTH - Constants.SIDE_MARGIN; x += Constants.BLOCK_WIDTH) {
-            for (int y = Constants.TOP_MARGIN; y + Constants.BLOCK_HEIGHT <= Constants.SCREEN_HEIGHT - 200; y += Constants.BLOCK_HEIGHT) {
+        for (int x = SIDE_MARGIN; x + BLOCK_WIDTH <= SCREEN_WIDTH - SIDE_MARGIN; x += BLOCK_WIDTH) {
+            for (int y = TOP_MARGIN; y + BLOCK_HEIGHT <= SCREEN_HEIGHT - 200; y += BLOCK_HEIGHT) {
                 blocks.add(new Block(x, y, Color.red));
             }
         }
