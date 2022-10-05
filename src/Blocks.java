@@ -29,6 +29,9 @@ public class Blocks {
                 newBlocks.add(block);
             }
         }
+        if (newBlocks.size() == 0) {
+            App.gameScreen = GameScreenEnum.GAMECLEAR;
+        }
         blocks = newBlocks;
     }
 
