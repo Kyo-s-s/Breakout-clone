@@ -71,11 +71,11 @@ public class App {
         Font font = new Font("SansSerif", Font.PLAIN, 50);
         gra.setFont(font);
         FontMetrics metrics = gra.getFontMetrics(font);
-        gra.drawString("Breakout clone", 250 - metrics.stringWidth("Breakout clone") / 2, 200);
+        gra.drawString("Breakout clone", SCREEN_WIDTH / 2 - metrics.stringWidth("Breakout clone") / 2, 200);
         font = new Font("SansSerif", Font.PLAIN, 20);
         gra.setFont(font);
         metrics = gra.getFontMetrics(font);
-        gra.drawString("Press enter to start", 250 - metrics.stringWidth("Press enter to start") / 2, 300);
+        gra.drawString("Press enter to start", SCREEN_WIDTH / 2 - metrics.stringWidth("Press enter to start") / 2, 300);
         if (Keyboard.isKeyPressed(KeyEvent.VK_ENTER)) {
             startGame();
         }

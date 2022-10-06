@@ -10,8 +10,9 @@ public class Ball {
     public Ball() {
         this.x = App.player.x + PLAYER_WIDTH / 2 - BALL_SIZE / 2;
         this.y = App.player.y - BALL_SIZE / 2;
-        this.dx = -1;
-        this.dy = -1;
+        final double angle = Math.random() * (BALL_ANGLE_MAX - BALL_ANGLE_MIN) + BALL_ANGLE_MIN;
+        this.dx = Math.cos(angle);
+        this.dy = -Math.sin(angle);
     }
 
     public void move() {
@@ -38,7 +39,9 @@ public class Ball {
             this.x + BALL_SIZE / 2 < App.player.x + PLAYER_WIDTH &&
             App.player.y < this.y + BALL_SIZE / 2
         ) {
-            this.dy *= -1;  // TODO: 位置によって角度を変える
+            double angle = (this.x + BALL_SIZE / 2 - App.player.x) / PLAYER_WIDTH * (BALL_ANGLE_MAX - BALL_ANGLE_MIN) + BALL_ANGLE_MIN;
+            this.dx = - Math.cos(angle);
+            this.dy = - Math.sin(angle);
         }
 
         this.x += this.dx;

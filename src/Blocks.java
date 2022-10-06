@@ -16,7 +16,7 @@ public class Blocks {
             for (int w = 0; w < colCount; w++) {
                 int x = startX + (BLOCK_WIDTH + 2 * BLOCK_MARGIN) * w;
                 int y = startY + (BLOCK_HEIGHT + 2 * BLOCK_MARGIN) * h;
-                Color color = new Color(255 - 10 * h, 0, 0);
+                Color color = new Color(255 - 7 * h, 0, 0);
                 blocks.add(new Block(x, y, color));
             }
         }
